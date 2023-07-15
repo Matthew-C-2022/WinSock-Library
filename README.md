@@ -24,3 +24,11 @@ Shown below is an example I've made using the header only library.
 it shows that the sendallexcluding function works, Deserialisation works, PacketHandleCallback works, and serialization works.
 
 ![image](https://github.com/Matthew-C-2022/WinSock-Library/assets/112186489/adc1b50c-acc5-4536-81cd-6842ae4df699)
+
+
+
+
+
+# Why I made this library
+
+The main reason I made this was that I was getting annoyed having to make init functions for winsock again and again and then make packet handlers ect ect it was getting annoying, as for when I get bored I like making DLL's and inject them into games and add very minor multiplayer functionality.
