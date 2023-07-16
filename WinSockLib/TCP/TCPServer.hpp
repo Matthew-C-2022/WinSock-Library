@@ -19,6 +19,7 @@ private:
     static int CIds;
     std::function<T> PacketHandleCallback;
 public:
+    // Initializes the server at IP and Port and adds the funcptr for the callback
     inline void Init(const char* ip, int port, T Funcadd) {
         WSADATA wsaData;
         WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -32,11 +33,12 @@ public:
         PacketHandleCallback = Funcadd;
         bind(serverSocket, (SOCKADDR*)&serverAddr, sizeof(serverAddr));
     }
-
+    //Starts listening
     inline void Listen() {
         listen(serverSocket, SOMAXCONN);
     }
 
+    //Accept clients, put this in a loop if you want multiple clients
     inline void Accept() {
         SOCKADDR_IN clientAddr;
         int clientSize = sizeof(clientAddr);
@@ -51,11 +53,13 @@ public:
         CIds++;
     }
 
+
+    //Sends buf to certain client ID;
     inline void Send(int ClientID, char* msg, int Len) {
         send(AcceptedSockets[ClientID].ClientSock, msg, Len, 0);
     }
 
-
+    //send all exclusing a certain SOCKET
     inline void SendAllExcluding(char* msg, int Len, SOCKET Exclude) {
         for (auto& Key : AcceptedSockets)
         {
@@ -65,27 +69,15 @@ public:
             }
         }
     }
-
-    inline void SendAll(char* msg, int Len, SOCKET Exclude) {
+    //send all
+    inline void SendAll(char* msg, int Len) {
         for (auto& Key : AcceptedSockets)
         {
-            if (Key.second.ClientSock != Exclude)
-            {
-                send(Key.second.ClientSock, msg, Len, 0);
-            }
+            send(Key.second.ClientSock, msg, Len, 0);
+
         }
     }
-
-    inline void SendAll(char* msg, int Len, int Exclude) {
-        for (auto& Key : AcceptedSockets)
-        {
-            if (Key.first != Exclude)
-            {
-                send(Key.second.ClientSock, msg, Len, 0);
-            }
-        }
-    }
-
+    //send all excluding Client ID
     inline void SendAllExcluding(char* msg, int Len, int CIDExclude) {
         for (auto& Key : AcceptedSockets)
         {
