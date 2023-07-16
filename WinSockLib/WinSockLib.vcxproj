@@ -140,6 +140,9 @@
     <ClInclude Include="TCP\TCPClient.hpp" />
     <ClInclude Include="TCP\TCPSClient.hpp" />
     <ClInclude Include="TCP\TCPServer.hpp" />
+    <ClInclude Include="UDP\UDPClient.hpp" />
+    <ClInclude Include="UDP\UDPSClient.hpp" />
+    <ClInclude Include="UDP\UDPServer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
