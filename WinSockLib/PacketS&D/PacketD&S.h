@@ -11,8 +11,9 @@ inline char* Serialize(char packetId, const T& data) {
 }
 
 template <typename T>
-inline T Deserialize(char* buffer, int size) {
+inline T Deserialize(char* buffer, int size, char& Packid) {
     char* data = new char[size];
+    Packid = buffer[0];
     memcpy(data, buffer + sizeof(char), sizeof(T));
     T* obj = reinterpret_cast<T*>(data);
     T result = *obj;

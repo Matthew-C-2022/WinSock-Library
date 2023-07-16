@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Includes\IncludeTCP.hpp" />
+    <ClInclude Include="Includes\IncludeUDP.hpp" />
     <ClInclude Include="PacketS&amp;D\PacketD&amp;S.h" />
     <ClInclude Include="TCP\TCPClient.hpp" />
     <ClInclude Include="TCP\TCPSClient.hpp" />
